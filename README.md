@@ -14,7 +14,13 @@ Before diving in, get everything installed and configured:
 npm install
 ```
 
-### 2. ⚙️ Create Your Environment File
+### 2. 🗄 Create the Database
+
+```bash
+createdb debugdb
+```
+
+### 3. ⚙️ Create Your Environment File
 
 Create a `.env` file at the root of the project. You can copy the provided example:
 
@@ -28,73 +34,52 @@ Then update `.env` with your local PostgreSQL username and password.
 
 ---
 
-## 🧪 Initialize the Database
+## 🪜 Step-by-Step Debugging Flow
 
-Follow these steps to get your database ready:
+You will debug one file at a time by following the natural flow of the application setup.
 
-### 1. Create the database
+---
 
-```bash
-createdb debugdb
-```
-
-### 2. Apply the schema
+#### 🔹 Step 1: Apply the schema (this will break first)
 
 ```bash
 npm run db:schema
 ```
 
-### 3. Seed the database
+You should hit an error about a SQL syntax issue.
+
+- `db/schema.sql` → Look for a  syntax error in your CREATE TABLE statement.
+
+Fix the error, then re-run the schema:
 
 ```bash
-npm run db:seed
-```
-
----
-
-## 🐛 Debug Instructions
-
-This app has **one error in each of the following files**:
-
-- `db/client.js`
-- `db/schema.sql`
-- `db/seed.js`
-- `queries/users.js`
-
-You’ll **follow the application flow**, fixing each step before moving to the next.
-
----
-
-### 🪜 Step-by-Step Debugging Flow
-
-#### 🔹 Step 1: Connect to the database and create schema
-
-```bash
-createdb debugdb
 npm run db:schema
 ```
-
-This will connect to the database and attempt to apply the schema. You may encounter an error in:
-
-- `db/client.js` → Check `.env` and `dotenv` usage  
-- `db/schema.sql` → Look closely at the commas and table structure
 
 ---
 
 #### 🔹 Step 2: Seed the database
 
-Once the schema is working, run:
+Once your schema is working, run:
 
 ```bash
 npm run db:seed
 ```
 
-You may hit a bug here. Fix:
+You will hit one or more errors here. Carefully read the error messages and investigate the cause.
 
-- `db/seed.js` → Check how the function is being called  
-- `queries/users.js` → Confirm the table and insert syntax are correct
+Start by checking:
 
-Re-run `npm run db:seed` after each fix until you see:
+- `db/seed.js`
+- `queries/users.js`
+
+Fix each issue one at a time. After each fix, re-run:
+
+```bash
+npm run db:seed
+```
+
+until you see:
 
 ```bash
 🌱 Database seeded.

@@ -9,7 +9,7 @@ export async function createUser(name, birthdate, favorite_number) {
   const {
     rows: [user],
   } = await client.query(
-    `INSERT INTO users (name, birthdate, favorite_number)
+    `INSERT INTO userz (name, birthdate, favorite_number)
        VALUES ($1, $2, $3)
        RETURNING *;`,
     [name, birthdate, favorite_number]
