@@ -5,7 +5,7 @@ export async function getUsers() {
   return users;
 }
 
-export async function createUser(name, birthdate, favorite_number) {
+export async function createUser(name, birthdate) {
   const {
     rows: [user],
   } = await client.query(
