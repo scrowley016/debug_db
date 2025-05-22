@@ -1,6 +1,6 @@
-# 🐞 Debug the Database
+# Debug the Database
 
-Welcome to your debugging challenge! This repo contains a simple PostgreSQL app that's currently **broken in 5 places**. Your mission is to fix the bugs — one file at a time — by following the flow of the application from start to finish.
+Welcome to your debugging challenge! This repo contains a simple PostgreSQL app that's currently **broken in several places**. Your mission is to fix the bugs — one file at a time — by following the flow of the application from start to finish.
 
 ---
 
@@ -8,39 +8,39 @@ Welcome to your debugging challenge! This repo contains a simple PostgreSQL app 
 
 Before diving in, get everything installed and configured:
 
-### 1. 📦 Install Dependencies
+### 1. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 2. 🗄 Create the Database
+### 2. Create the Database
 
 ```bash
 createdb debugdb
 ```
 
-### 3. ⚙️ Create Your Environment File
+### 3. Create Your Environment File
 
 Create a `.env` file at the root of the project. You can copy the provided example:
 
 ```bash
-cp .env.example .env
+cp example.env .env
 ```
 
 Then update `.env` with your local PostgreSQL username and password.
 
-> ⚠️ **Make sure your `.env` is never committed to GitHub!**
+> Example: DATABASE_URL=postgres://your_username:your_password@localhost:5432/debugdb
 
 ---
 
-## 🪜 Step-by-Step Debugging Flow
+## Debugging Flow
 
 You will debug one file at a time by following the natural flow of the application setup.
 
 ---
 
-#### 🔹 Step 1: Apply the schema (this will break first)
+#### Step 1: Apply the schema (this will break first)
 
 ```bash
 npm run db:schema
@@ -58,7 +58,7 @@ npm run db:schema
 
 ---
 
-#### 🔹 Step 2: Seed the database
+####  Step 2: Seed the database
 
 Once your schema is working, run:
 
@@ -70,8 +70,8 @@ You will hit one or more errors here. Carefully read the error messages and inve
 
 Start by checking:
 
-- `db/seed.js`
 - `queries/users.js`
+- `db/seed.js`
 
 Fix each issue one at a time. After each fix, re-run:
 
@@ -89,7 +89,7 @@ until you see:
 
 ## 🏁 You're Done When...
 
-✅ You can run:
+You can run:
 
 ```bash
 npm run db:reset

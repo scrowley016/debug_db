@@ -2,6 +2,7 @@ import  client  from "./client.js";
 import { createUser } from "./queries/users.js";
 
 async function seedDB() {
+  
   await client.connect();
 
   await createUser("Natasha Romanoff", "1984-11", 13);
@@ -10,6 +11,7 @@ async function seedDB() {
   await createUser("Peter Parker", "2001-08-10");
 
   console.log("🌱 Database seeded.");
+
   await client.end();
 }
 
